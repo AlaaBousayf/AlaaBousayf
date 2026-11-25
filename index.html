@@ -53,8 +53,8 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body { background: var(--bg); color: var(--ink); font-family: var(--font-sans); font-size: 1rem; line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-sans); font-size: 1rem; line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
 a { color: inherit; }
 img { display: block; height: auto; max-width: 100%; }
 :focus-visible { outline: 2px solid var(--accent-2); outline-offset: 3px; border-radius: 6px; }
@@ -371,15 +371,14 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
   .ctas { margin-top: 22px; gap: 10px; flex-wrap: nowrap; }
   .ctas .btn { padding: 12px 18px; font-size: .92rem; flex: 1 1 0; justify-content: center; white-space: nowrap; }
   .scroll-cue { display: none; }
-  .stage { height: 250px; max-width: none; }
-  .s1 { width: 82%; top: 10px; }
-  .s2 { width: 52%; top: 120px; }
-  .s3 { width: 46%; left: 0; top: 150px; }
-  .float { padding: 5px; border-radius: 10px; }
-  .float .cap { font-size: .58rem; padding: 2px 2px 5px; }
-  .badge { font-size: .72rem; padding: 6px 10px; }
-  .badge.k1 { top: -14px; right: 0; }
-  .badge.k2 { bottom: -6px; left: auto; right: 4%; }
+  .stage { height: auto; max-width: none; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; perspective: none; }
+  .float { position: relative; left: auto; right: auto; top: auto; width: auto; padding: 5px; border-radius: 12px; transform: none !important; }
+  .s1 { grid-column: 1 / -1; order: 1; }
+  .s2 { order: 2; } .s3 { order: 3; }
+  .float-in { animation: none; }
+  .float img { width: 100%; }
+  .float .cap { font-size: .58rem; padding: 2px 2px 5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .badge { display: none; }
   .blob.b1 { width: 260px; height: 260px; left: 40%; }
   .blob.b2 { width: 240px; height: 240px; left: 50%; top: 50%; }
   .blob.b3 { width: 200px; height: 200px; left: 0; }
