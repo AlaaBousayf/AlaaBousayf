@@ -317,6 +317,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
 /* ---------- scroll reveal (only below-the-fold items get .pre, so the page is complete at rest) ---------- */
 [data-reveal] { transition: transform 1s cubic-bezier(.2,.8,.2,1), opacity 1s cubic-bezier(.2,.8,.2,1); transition-delay: var(--d, 0s); }
 [data-reveal].pre { opacity: 0; transform: translateY(50px); }
+@media (max-width: 760px) { [data-reveal] { transition-duration: .7s; } [data-reveal].pre { transform: translateY(24px); } }
 
 /* ---------- custom cursor ---------- */
 .cur-dot, .cur-ring { position: fixed; left: 0; top: 0; pointer-events: none; z-index: 100; border-radius: 50%; opacity: 0; transition: opacity .3s; }
@@ -352,6 +353,108 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
   .stage { height: 290px; }
   .badge { font-size: .74rem; padding: 7px 11px; }
 }
+/* ---------- phone polish ---------- */
+@media (max-width: 760px) {
+  .wrap { padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+  .site-head .wrap { padding-block: 12px; }
+  .mark { width: 28px; height: 28px; font-size: .72rem; }
+  .pill-btn { padding: 8px 14px; font-size: .88rem; }
+  .hero { padding-top: 96px; padding-bottom: 40px; }
+  .hero .wrap { gap: 28px; }
+  .avail { font-size: .8rem; padding: 6px 12px 6px 10px; }
+  .avail .long { display: none; }
+  .hero h1 { margin-top: 18px; font-size: clamp(2.1rem, 10vw, 2.7rem); }
+  .hero .lede { margin-top: 16px; font-size: 1rem; line-height: 1.55; }
+  .roles { margin-top: 18px; gap: 8px; }
+  .role { padding: 7px 11px; font-size: .82rem; border-radius: 10px; }
+  .role svg { width: 15px; height: 15px; }
+  .ctas { margin-top: 22px; gap: 10px; flex-wrap: nowrap; }
+  .ctas .btn { padding: 12px 18px; font-size: .92rem; flex: 1 1 0; justify-content: center; white-space: nowrap; }
+  .scroll-cue { display: none; }
+  .stage { height: 250px; max-width: none; }
+  .s1 { width: 82%; top: 10px; }
+  .s2 { width: 52%; top: 120px; }
+  .s3 { width: 46%; left: 0; top: 150px; }
+  .float { padding: 5px; border-radius: 10px; }
+  .float .cap { font-size: .58rem; padding: 2px 2px 5px; }
+  .badge { font-size: .72rem; padding: 6px 10px; }
+  .badge.k1 { top: -14px; right: 0; }
+  .badge.k2 { bottom: -6px; left: auto; right: 4%; }
+  .blob.b1 { width: 260px; height: 260px; left: 40%; }
+  .blob.b2 { width: 240px; height: 240px; left: 50%; top: 50%; }
+  .blob.b3 { width: 200px; height: 200px; left: 0; }
+  .ribbon { padding-block: 16px; }
+  .ribbon .tile { height: 120px; padding: 10px; border-radius: 12px; }
+  .ribbon .tile img { max-height: 100px; }
+  .ribbon-track { gap: 12px; }
+
+  .section { padding-block: 72px 0; }
+  .sec-head { margin-bottom: 28px; gap: 12px; }
+  .sec-head h2 { font-size: clamp(1.9rem, 8.5vw, 2.4rem); }
+  .sec-head p { font-size: .95rem; }
+
+  .dual { gap: 10px; }
+  .side { border-radius: 22px; padding: 22px 18px; gap: 10px; }
+  .side h3 { font-size: 1.9rem; }
+  .side > p { font-size: .95rem; }
+  .dual-arrow span { width: 36px; height: 36px; font-size: .95rem; }
+  .mock-body { min-height: 0; }
+  .artboard { padding: 26px 12px 14px; }
+  .code pre { min-height: 0; font-size: .68rem; padding: 12px 14px; }
+
+  .stack { gap: 16px; }
+  .case { border-radius: 24px; padding: 22px 18px; gap: 22px; }
+  .case-text { gap: 12px; }
+  .case h3 { font-size: 2.1rem; }
+  .case .one { font-size: 1.02rem; }
+  .case .desc { font-size: .95rem; }
+  .case .chips { display: none; }
+  .process { grid-template-columns: repeat(5, minmax(0,1fr)); gap: 4px; }
+  .process span { font-size: .62rem; padding: 6px 2px; border-radius: 8px; }
+  .process span b { font-size: .56rem; margin-bottom: 2px; }
+  .case-link { padding: 10px 16px; font-size: .92rem; }
+  .shot { padding: 5px; border-radius: 10px; }
+  .shot figcaption { font-size: .58rem; padding: 2px 2px 5px; }
+  .case-media { gap: 10px; }
+  .duo { grid-template-columns: 1fr 1fr; gap: 10px; }
+
+  .dev-row { padding-block: 18px; }
+  .dev-row h3 { font-size: 1.2rem; }
+  .dev-row p { font-size: .9rem; }
+  .dev-row:hover { padding-inline: 0; color: inherit; }
+  .dev-row:hover::before { transform: scaleY(0); }
+  .dev-row:hover p { color: var(--muted); }
+  .dev-note { font-size: 1.1rem; }
+
+  .caps { gap: 12px; }
+  .cap { padding: 22px; border-radius: 20px; }
+  .cap h3 { font-size: 1.25rem; }
+
+  .about { gap: 36px; }
+  .statement { font-size: 1.4rem; }
+  .about .body { margin-top: 18px; font-size: .95rem; }
+  .numbers { margin-top: 26px; }
+  .num b { font-size: 1.8rem; }
+  .num span { font-size: .78rem; }
+  .timeline li { grid-template-columns: 78px minmax(0,1fr); padding-block: 14px; }
+
+  .contact-wrap { margin-top: 80px; }
+  .contact { border-radius: 26px; padding: 34px 0 26px; gap: 22px; }
+  .contact .inner { padding-inline: 22px; gap: 14px; }
+  .contact h2 { font-size: 2.3rem; }
+  .mail { font-size: .88rem; padding: 12px 14px; flex: 1 1 100%; text-align: center; }
+  .copy { flex: 1 1 100%; padding: 13px; }
+  .big-marquee { padding-top: 18px; }
+  .big-marquee .row { font-size: 2rem; gap: 26px; }
+  .big-marquee .row span { gap: 26px; }
+  .contact .glow { width: 300px; height: 300px; right: -80px; top: -100px; }
+  footer { padding-block: 28px; font-size: .8rem; }
+}
+@media (max-width: 380px) {
+  .ctas { flex-wrap: wrap; }
+  .hero h1 { font-size: 2rem; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
   html { scroll-behavior: auto; }
@@ -384,7 +487,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
     <div class="grain" aria-hidden="true"></div>
     <div class="wrap">
       <div>
-        <span class="avail"><i aria-hidden="true"></i>Available for new roles · remote or Benghazi</span>
+        <span class="avail"><i aria-hidden="true"></i>Available for new roles<span class="long">&nbsp;· remote or Benghazi</span></span>
         <h1>
           <span class="line"><span>UI/UX designer</span></span>
           <span class="line"><span><span class="amp">&amp;</span> web developer</span></span>
@@ -714,8 +817,12 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
   if ('IntersectionObserver' in window && !reduce) {
     const io = new IntersectionObserver(function (es) {
       es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.remove('pre'); io.unobserve(e.target); } });
-    }, { threshold: 0.12 });
+    }, { threshold: 0, rootMargin: '0px 0px -8% 0px' });
     revs.forEach(function (el) { if (el.getBoundingClientRect().top > innerHeight) { el.classList.add('pre'); io.observe(el); } });
+    // safety net: never leave a block hidden if the observer misses it (fast flings, jumps)
+    addEventListener('scroll', function () {
+      document.querySelectorAll('[data-reveal].pre').forEach(function (el) { if (el.getBoundingClientRect().top < innerHeight * 0.95) el.classList.remove('pre'); });
+    }, { passive: true });
   }
 
   // Count-up numbers (the final value is already in the markup)
