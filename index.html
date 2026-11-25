@@ -1,0 +1,834 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Alaa Bousayf Portfolio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Alaa Bousayf — UI/UX designer and web developer in Benghazi, Libya.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@500;600&display=swap">
+<style>
+/* Layout: clean editorial studio site brought to life with motion — drifting colour field and
+   floating artboards in the hero, an image ribbon, case studies that stack as you scroll,
+   reveal-on-scroll, tilt, magnetic buttons and a custom cursor. Everything is visible at rest. */
+:root {
+  --bg: #fbfbfa;
+  --surface: #f2f2ef;
+  --ink: #111114;
+  --ink-2: #3b3b43;
+  --muted: #76767f;
+  --line: #e6e6e2;
+  --accent: #f0532e;
+  --accent-2: #3a6df0;
+  --accent-3: #8b5cf6;
+  --t-mowarred: #e8eeff;
+  --t-foody: #fdece6;
+  --t-liu: #e6edf6;
+  --t-manasa: #efe8ff;
+  --t-invoice: #ecf0f5;
+  --t-sage: #eef0e0;
+  --card-shadow: 0 1px 2px rgba(17,17,20,.05), 0 30px 60px -20px rgba(17,17,20,.22);
+  --font-sans: "Instrument Sans", "Segoe UI", system-ui, sans-serif;
+  --font-serif: "Instrument Serif", Georgia, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+  --font-ar: "IBM Plex Sans Arabic", "Geeza Pro", "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0d0d10; --surface: #16161b; --ink: #f2f2ee; --ink-2: #cdcdd3; --muted: #93939c; --line: #24242b;
+    --accent: #ff6a47; --accent-2: #7d9bff; --accent-3: #a98bff;
+    --t-mowarred: #141b33; --t-foody: #2a1813; --t-liu: #131a26; --t-manasa: #1c1530; --t-invoice: #151a22; --t-sage: #1c1d14;
+    --card-shadow: 0 1px 2px rgba(0,0,0,.5), 0 30px 60px -20px rgba(0,0,0,.7);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0d0d10; --surface: #16161b; --ink: #f2f2ee; --ink-2: #cdcdd3; --muted: #93939c; --line: #24242b;
+  --accent: #ff6a47; --accent-2: #7d9bff; --accent-3: #a98bff;
+  --t-mowarred: #141b33; --t-foody: #2a1813; --t-liu: #131a26; --t-manasa: #1c1530; --t-invoice: #151a22; --t-sage: #1c1d14;
+  --card-shadow: 0 1px 2px rgba(0,0,0,.5), 0 30px 60px -20px rgba(0,0,0,.7);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--ink); font-family: var(--font-sans); font-size: 1rem; line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+a { color: inherit; }
+img { display: block; height: auto; max-width: 100%; }
+:focus-visible { outline: 2px solid var(--accent-2); outline-offset: 3px; border-radius: 6px; }
+h1, h2, h3 { margin: 0; font-weight: 600; letter-spacing: -0.03em; text-wrap: balance; }
+p { margin: 0; }
+.wrap { max-width: 1180px; margin: 0 auto; padding-left: max(24px, env(safe-area-inset-left, 0px)); padding-right: max(24px, env(safe-area-inset-right, 0px)); }
+.serif { font-family: var(--font-serif); font-style: italic; font-weight: 400; letter-spacing: -0.01em; }
+.eyebrow { font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--muted); }
+.ar { font-family: var(--font-ar); }
+
+/* ---------- progress + header ---------- */
+.progress { position: fixed; top: env(safe-area-inset-top, 0px); left: 0; height: 2px; width: 100%; transform-origin: 0 50%; transform: scaleX(0); background: linear-gradient(90deg, var(--accent), var(--accent-3), var(--accent-2)); z-index: 40; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 45; background: var(--bg); }
+.site-head { position: fixed; top: env(safe-area-inset-top, 0px); left: 0; right: 0; z-index: 30; transition: background .3s, border-color .3s; border-bottom: 1px solid transparent; }
+.site-head.scrolled { background: color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter: saturate(1.4) blur(14px); border-bottom-color: var(--line); }
+.site-head .wrap { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-block: 16px; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 600; }
+.mark { width: 32px; height: 32px; border-radius: 9px; background: var(--ink); color: var(--bg); display: grid; place-items: center; font-size: 0.8rem; font-weight: 700; transition: transform .5s cubic-bezier(.2,.8,.2,1); }
+.brand:hover .mark { transform: rotate(-12deg) scale(1.05); }
+.nav { display: flex; align-items: center; gap: 28px; }
+.nav a { position: relative; text-decoration: none; color: var(--muted); font-size: 0.94rem; transition: color .2s; }
+.nav a:not(.pill-btn)::after { content: ""; position: absolute; left: 0; right: 0; bottom: -4px; height: 1px; background: var(--ink); transform: scaleX(0); transform-origin: right; transition: transform .35s ease; }
+.nav a:not(.pill-btn):hover { color: var(--ink); }
+.nav a:not(.pill-btn):hover::after { transform: scaleX(1); transform-origin: left; }
+.pill-btn { color: var(--bg) !important; background: var(--ink); padding: 10px 18px; border-radius: 999px; font-weight: 500; display: inline-block; }
+
+/* ---------- hero ---------- */
+.hero { position: relative; padding-top: 150px; padding-bottom: 90px; overflow: hidden; }
+.blobs { position: absolute; inset: -10% -10% auto; height: 120%; z-index: 0; pointer-events: none; filter: blur(70px); opacity: .55; }
+.blob { position: absolute; border-radius: 50%; }
+.blob.b1 { width: 460px; height: 460px; background: var(--accent); left: 55%; top: 6%; animation: drift1 18s ease-in-out infinite; opacity: .55; }
+.blob.b2 { width: 420px; height: 420px; background: var(--accent-2); left: 72%; top: 34%; animation: drift2 22s ease-in-out infinite; opacity: .45; }
+.blob.b3 { width: 360px; height: 360px; background: var(--accent-3); left: 40%; top: 46%; animation: drift3 26s ease-in-out infinite; opacity: .35; }
+@keyframes drift1 { 50% { transform: translate(-120px, 80px) scale(1.15); } }
+@keyframes drift2 { 50% { transform: translate(-80px, -100px) scale(.9); } }
+@keyframes drift3 { 50% { transform: translate(140px, -40px) scale(1.1); } }
+.grain { position: absolute; inset: 0; z-index: 0; pointer-events: none; background-image: radial-gradient(color-mix(in srgb, var(--ink) 9%, transparent) 1px, transparent 1px); background-size: 24px 24px; mask-image: linear-gradient(to bottom, #000 0%, transparent 85%); }
+.hero .wrap { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: 40px; align-items: center; }
+.avail { display: inline-flex; align-items: center; gap: 10px; font-size: 0.9rem; color: var(--ink-2); padding: 7px 14px 7px 10px; border: 1px solid var(--line); border-radius: 999px; background: color-mix(in srgb, var(--bg) 70%, transparent); backdrop-filter: blur(6px); }
+.avail i { position: relative; width: 8px; height: 8px; border-radius: 50%; background: #1fa15a; }
+.avail i::after { content: ""; position: absolute; inset: 0; border-radius: 50%; background: #1fa15a; animation: ping 1.8s cubic-bezier(0,0,.2,1) infinite; }
+@keyframes ping { 75%, 100% { transform: scale(2.6); opacity: 0; } }
+.hero h1 { margin-top: 26px; font-size: clamp(2.2rem, 4.8vw, 4.1rem); line-height: 1.04; letter-spacing: -0.04em; }
+.line { display: block; overflow: hidden; padding-bottom: 0.08em; margin-bottom: -0.08em; }
+.line > span { display: inline-block; animation: lineUp 1s cubic-bezier(.2,.8,.2,1) both; }
+.line:nth-child(2) > span { animation-delay: .1s; }
+.line:nth-child(3) > span { animation-delay: .2s; }
+@keyframes lineUp { from { transform: translateY(105%); } to { transform: none; } }
+.rotator { display: inline-grid; vertical-align: bottom; color: var(--accent); }
+.rotator > span { grid-area: 1 / 1; font-family: var(--font-serif); font-style: italic; font-weight: 400; letter-spacing: -0.01em; transition: transform .7s cubic-bezier(.2,.8,.2,1), opacity .5s; white-space: nowrap; }
+.rotator > span:not(.on) { opacity: 0; transform: translateY(60%); }
+.rotator > span.out { opacity: 0; transform: translateY(-60%); }
+.hero .lede { margin-top: 22px; font-size: 1.05rem; color: var(--ink-2); max-width: 46ch; animation: fadeUp 1s .35s cubic-bezier(.2,.8,.2,1) both; }
+.ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 34px; animation: fadeUp 1s .45s cubic-bezier(.2,.8,.2,1) both; }
+@keyframes fadeUp { from { transform: translateY(20px); } to { transform: none; } }
+.btn { position: relative; display: inline-flex; align-items: center; gap: 10px; padding: 15px 24px; border-radius: 999px; font-weight: 500; text-decoration: none; border: 1px solid var(--line); overflow: hidden; transition: transform .25s cubic-bezier(.2,.8,.2,1), border-color .25s; isolation: isolate; }
+.btn.primary { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.btn.primary::before { content: ""; position: absolute; inset: 0; background: var(--accent); transform: translateY(101%); transition: transform .45s cubic-bezier(.2,.8,.2,1); z-index: -1; }
+.btn.primary:hover::before { transform: none; }
+.btn.primary:hover { border-color: var(--accent); color: #fff; }
+.btn.ghost { background: color-mix(in srgb, var(--bg) 70%, transparent); backdrop-filter: blur(6px); }
+.btn.ghost:hover { border-color: var(--ink); }
+.btn .arr { transition: transform .3s; }
+.btn:hover .arr { transform: translate(3px, 0); }
+
+/* hero stage */
+.stage { position: relative; height: 520px; perspective: 1200px; }
+.float { position: absolute; border-radius: 14px; box-shadow: var(--card-shadow); background: var(--bg); padding: 8px; transition: transform .2s ease-out; will-change: transform; }
+.float img { border-radius: 8px; }
+.float .cap { font: 500 0.66rem/1 var(--font-mono); color: var(--muted); padding: 4px 4px 8px; }
+.float-in { animation: bob 7s ease-in-out infinite; }
+.s1 { width: 78%; left: 0; top: 30px; }
+.s1 .float-in { animation-duration: 8s; }
+.s2 { width: 46%; right: 0; top: 230px; }
+.s2 .float-in { animation-duration: 6.5s; animation-delay: -2s; }
+.s3 { width: 40%; left: 12%; top: 300px; }
+.s3 .float-in { animation-duration: 7.5s; animation-delay: -4s; }
+@keyframes bob { 50% { transform: translateY(-14px); } }
+.badge { position: absolute; z-index: 3; display: inline-flex; align-items: center; gap: 8px; padding: 9px 14px; border-radius: 999px; background: var(--ink); color: var(--bg); font-size: 0.82rem; font-weight: 500; box-shadow: var(--card-shadow); animation: bob 6s ease-in-out infinite; }
+.badge.k1 { right: 6%; top: 0; animation-delay: -1s; }
+.badge.k2 { left: -2%; bottom: 40px; background: var(--accent); color: #fff; animation-delay: -3s; }
+.badge svg { width: 14px; height: 14px; }
+
+.scroll-cue { margin-top: 64px; display: flex; align-items: center; gap: 12px; color: var(--muted); font-size: 0.85rem; }
+.mouse { width: 22px; height: 34px; border: 1.5px solid var(--muted); border-radius: 12px; position: relative; }
+.mouse::after { content: ""; position: absolute; left: 50%; top: 7px; width: 3px; height: 7px; margin-left: -1.5px; border-radius: 2px; background: var(--muted); animation: wheel 1.6s ease-in-out infinite; }
+@keyframes wheel { 0% { transform: translateY(0); opacity: 1; } 100% { transform: translateY(10px); opacity: 0; } }
+
+/* ---------- image ribbon ---------- */
+.ribbon { padding-block: 26px; overflow: hidden; border-block: 1px solid var(--line); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+.ribbon-track { display: flex; gap: 18px; width: max-content; animation: slide 50s linear infinite; }
+.ribbon:hover .ribbon-track { animation-play-state: paused; }
+.ribbon .tile { height: 180px; border-radius: 14px; padding: 14px; display: grid; place-items: center; flex: none; }
+.ribbon .tile img { max-height: 152px; width: auto; border-radius: 6px; box-shadow: 0 8px 20px rgba(0,0,0,.12); transition: transform .5s cubic-bezier(.2,.8,.2,1); }
+.ribbon .tile:hover img { transform: scale(1.06); }
+@keyframes slide { to { transform: translateX(-50%); } }
+
+/* ---------- sections ---------- */
+.section { padding-block: 130px 0; }
+.sec-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px; align-items: end; margin-bottom: 64px; }
+.sec-head h2 { font-size: clamp(2.2rem, 5vw, 4rem); line-height: 1; letter-spacing: -0.045em; }
+.sec-head h2 .serif { color: var(--accent); }
+.sec-head p { color: var(--muted); max-width: 44ch; justify-self: end; }
+
+/* ---------- stacked case studies ---------- */
+.stack { display: grid; gap: 28px; }
+.case { position: sticky; top: calc(96px + var(--i) * 18px); border-radius: 32px; padding: clamp(24px, 3.6vw, 48px); display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: clamp(24px, 4vw, 56px); align-items: center; min-height: 560px; box-shadow: 0 -1px 0 color-mix(in srgb, var(--ink) 6%, transparent), 0 -20px 50px -30px rgba(0,0,0,.25); transform-origin: 50% 0; }
+.case-text { display: grid; gap: 18px; align-content: center; min-width: 0; }
+.case .idx { display: flex; align-items: center; gap: 10px; font-family: var(--font-mono); font-size: 0.74rem; color: var(--muted); }
+.case .idx b { font-weight: 500; color: var(--ink); }
+.case h3 { font-size: clamp(2.2rem, 4.6vw, 3.8rem); line-height: 1; letter-spacing: -0.045em; }
+.case .one { font-size: 1.15rem; color: var(--ink-2); max-width: 40ch; }
+.case .desc { color: var(--ink-2); max-width: 52ch; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font-size: 0.8rem; padding: 6px 11px; border-radius: 999px; background: color-mix(in srgb, var(--bg) 65%, transparent); border: 1px solid color-mix(in srgb, var(--ink) 8%, transparent); color: var(--ink-2); }
+.case-link { display: inline-flex; align-items: center; gap: 10px; font-weight: 500; text-decoration: none; width: fit-content; padding: 12px 18px 12px 20px; border-radius: 999px; background: var(--ink); color: var(--bg); transition: gap .3s, background .3s; }
+.case-link:hover { gap: 16px; background: var(--accent); color: #fff; }
+.case-media { position: relative; display: grid; gap: 14px; justify-items: center; min-width: 0; }
+.tilt { transition: transform .25s ease-out; transform-style: preserve-3d; will-change: transform; }
+.shot { position: relative; margin: 0; border-radius: 14px; overflow: hidden; box-shadow: var(--card-shadow); background: var(--bg); padding: 8px; max-width: 100%; }
+.shot img { border-radius: 8px; transition: transform .8s cubic-bezier(.2,.8,.2,1); }
+.shot:hover img { transform: scale(1.04); }
+.shot figcaption { font: 500 0.66rem/1 var(--font-mono); color: var(--muted); padding: 4px 4px 8px; }
+.duo { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; align-items: start; width: 100%; }
+.c-mowarred { --i: 0; background: var(--t-mowarred); }
+.c-foody { --i: 1; background: var(--t-foody); }
+.c-liu { --i: 2; background: var(--t-liu); }
+.c-manasa { --i: 3; background: var(--t-manasa); }
+.c-invoice { --i: 4; background: var(--t-invoice); }
+.c-sage { --i: 5; background: var(--t-sage); }
+.process { display: grid; grid-template-columns: repeat(5, minmax(0,1fr)); gap: 6px; }
+.process span { font-size: 0.74rem; text-align: center; padding: 8px 4px; border-radius: 10px; background: color-mix(in srgb, var(--bg) 70%, transparent); color: var(--ink-2); position: relative; }
+.process span b { display: block; font: 500 0.64rem/1 var(--font-mono); color: var(--accent); margin-bottom: 4px; }
+
+/* ---------- designer + developer ---------- */
+.hero h1 .amp { font-family: var(--font-serif); font-style: italic; font-weight: 400; color: var(--accent-2); }
+.hero .lede b { color: var(--ink); font-weight: 600; }
+.roles { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 24px; animation: fadeUp 1s .4s cubic-bezier(.2,.8,.2,1) both; }
+.role { display: inline-flex; align-items: center; gap: 8px; padding: 9px 14px; border-radius: 12px; font-weight: 500; font-size: 0.92rem; border: 1px solid var(--line); background: color-mix(in srgb, var(--bg) 70%, transparent); backdrop-filter: blur(6px); }
+.role svg { width: 18px; height: 18px; }
+.r-design svg { color: var(--accent); }
+.r-dev svg { color: var(--accent-2); }
+.role-plus { font-weight: 600; color: var(--muted); animation: spin 6s linear infinite; display: inline-block; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.dual { display: grid; grid-template-columns: minmax(0,1fr) 56px minmax(0,1fr); gap: 0; align-items: stretch; }
+.side { border-radius: 28px; padding: clamp(24px, 3vw, 36px); display: grid; gap: 14px; align-content: start; min-width: 0; }
+.s-design { background: var(--t-foody); }
+.s-dev { background: var(--t-mowarred); }
+.side-top { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; }
+.side-tag { font: 500 0.72rem/1 var(--font-mono); padding: 6px 10px; border-radius: 999px; background: color-mix(in srgb, var(--bg) 70%, transparent); color: var(--ink-2); }
+.side h3 { font-size: clamp(1.9rem, 3.4vw, 2.8rem); letter-spacing: -0.045em; line-height: 1; }
+.s-design h3 { color: var(--accent); }
+.s-dev h3 { color: var(--accent-2); }
+.side > p { color: var(--ink-2); max-width: 46ch; }
+.dual-arrow { display: grid; place-items: center; }
+.dual-arrow span { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; background: var(--ink); color: var(--bg); font-size: 1.1rem; animation: nudge 2s ease-in-out infinite; }
+@keyframes nudge { 50% { transform: translateX(5px); } }
+.mock { margin-top: 10px; border-radius: 16px; overflow: hidden; background: #1c1c22; box-shadow: var(--card-shadow); min-width: 0; }
+.mock-bar { display: flex; align-items: center; gap: 6px; padding: 10px 12px; background: #26262d; }
+.mock-bar i { width: 9px; height: 9px; border-radius: 50%; background: #ff5f57; }
+.mock-bar i:nth-child(2) { background: #febc2e; } .mock-bar i:nth-child(3) { background: #28c840; }
+.mock-bar span { margin-left: 8px; font: 500 0.7rem/1 var(--font-mono); color: #a3a3ad; }
+.mock-body { display: grid; grid-template-columns: 110px minmax(0,1fr); min-height: 230px; }
+.layers { display: grid; align-content: start; gap: 2px; padding: 10px 8px; border-right: 1px solid #2e2e36; font: 0.68rem/1.4 var(--font-mono); color: #9a9aa4; }
+.layers span { padding: 4px 6px; border-radius: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.layers .on { background: #3a6df0; color: #fff; }
+.artboard { position: relative; display: grid; place-items: center; padding: 22px 16px; background-image: radial-gradient(#2e2e36 1px, transparent 1px); background-size: 14px 14px; }
+.artboard img { border-radius: 6px; max-width: 100%; }
+.sel-box { position: absolute; inset: 16px 12px; border: 1.5px solid #3a6df0; border-radius: 2px; animation: selPulse 3s ease-in-out infinite; pointer-events: none; }
+.sel-lbl { position: absolute; left: -1.5px; top: -20px; font: 500 0.62rem/1 var(--font-mono); background: #3a6df0; color: #fff; padding: 4px 6px; border-radius: 3px 3px 3px 0; white-space: nowrap; }
+@keyframes selPulse { 50% { inset: 22px 18px; } }
+.code pre { margin: 0; padding: 16px 18px; min-height: 230px; font: 0.78rem/1.7 var(--font-mono); color: #e6e6ea; overflow-x: auto; white-space: pre; }
+.code .k { color: #c792ea; } .code .f { color: #82aaff; } .code .t { color: #f07178; } .code .a { color: #ffcb6b; } .code .s { color: #c3e88d; }
+.caret { display: inline-block; width: 7px; height: 1.05em; background: var(--accent-2); vertical-align: text-bottom; margin-left: 2px; animation: blink 1s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+
+.dev-list { border-top: 1px solid var(--line); }
+.dev-row { position: relative; display: grid; grid-template-columns: 60px minmax(0,1.3fr) minmax(0,1fr) 40px; gap: 24px; align-items: center; padding-block: 28px; border-bottom: 1px solid var(--line); text-decoration: none; overflow: hidden; isolation: isolate; transition: padding .4s cubic-bezier(.2,.8,.2,1), color .3s; }
+.dev-row::before { content: ""; position: absolute; inset: 0; background: var(--ink); transform: scaleY(0); transform-origin: bottom; transition: transform .45s cubic-bezier(.2,.8,.2,1); z-index: -1; }
+.dev-row:hover { padding-inline: 24px; color: var(--bg); }
+.dev-row:hover::before { transform: scaleY(1); }
+.dev-row .no { font: 500 0.78rem var(--font-mono); color: var(--muted); }
+.dev-row h3 { font-size: clamp(1.3rem, 2.6vw, 2rem); letter-spacing: -0.035em; }
+.dev-row p { color: var(--muted); margin-top: 4px; font-size: 0.95rem; }
+.dev-row:hover p, .dev-row:hover .no { color: color-mix(in srgb, var(--bg) 65%, var(--ink)); }
+.dev-stack { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+.dev-stack span { font: 500 0.72rem/1 var(--font-mono); padding: 7px 10px; border-radius: 999px; border: 1px solid var(--line); white-space: nowrap; }
+.dev-row:hover .dev-stack span { border-color: color-mix(in srgb, var(--bg) 25%, var(--ink)); }
+.dev-stack .live { color: #1fa15a; border-color: color-mix(in srgb, #1fa15a 40%, transparent); }
+.go { font-size: 1.3rem; transition: transform .4s cubic-bezier(.2,.8,.2,1); justify-self: end; }
+.dev-row:hover .go { transform: rotate(45deg); color: var(--accent); }
+.dev-note { margin-top: 26px; color: var(--muted); font-family: var(--font-serif); font-style: italic; font-size: 1.3rem; }
+@media (max-width: 960px) {
+  .dual { grid-template-columns: 1fr; gap: 14px; }
+  .dual-arrow span { transform: rotate(90deg); animation: none; }
+}
+@media (max-width: 760px) {
+  .dev-row { grid-template-columns: 1fr auto; gap: 10px; }
+  .dev-row .no { display: none; }
+  .dev-stack { grid-column: 1 / -1; justify-content: flex-start; grid-row: 2; }
+  .go { grid-column: 2; grid-row: 1; }
+  .mock-body { grid-template-columns: 1fr; }
+  .layers { display: none; }
+}
+
+/* ---------- capabilities ---------- */
+.caps { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 18px; }
+.cap { position: relative; border: 1px solid var(--line); border-radius: 24px; padding: 30px; display: grid; gap: 14px; align-content: start; overflow: hidden; background: var(--bg); transition: transform .4s cubic-bezier(.2,.8,.2,1), border-color .3s; }
+.cap::before { content: ""; position: absolute; inset: 0; background: radial-gradient(400px circle at var(--mx, 50%) var(--my, 0%), color-mix(in srgb, var(--accent) 14%, transparent), transparent 60%); opacity: 0; transition: opacity .3s; pointer-events: none; }
+.cap:hover { transform: translateY(-6px); border-color: color-mix(in srgb, var(--accent) 40%, var(--line)); }
+.cap:hover::before { opacity: 1; }
+.cap .ico { width: 48px; height: 48px; border-radius: 14px; display: grid; place-items: center; background: var(--surface); }
+.cap .ico svg { width: 24px; height: 24px; }
+.cap h3 { font-size: 1.4rem; }
+.cap p { color: var(--ink-2); }
+.cap ul { list-style: none; margin: 6px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.cap li { font-size: 0.8rem; padding: 5px 10px; border-radius: 999px; background: var(--surface); color: var(--ink-2); }
+
+/* ---------- about ---------- */
+.about { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr); gap: 72px; }
+.statement { font-size: clamp(1.6rem, 3vw, 2.4rem); line-height: 1.22; letter-spacing: -0.03em; font-weight: 500; }
+.statement .serif { color: var(--accent); }
+.about .body { margin-top: 28px; display: grid; gap: 16px; color: var(--ink-2); max-width: 62ch; }
+.numbers { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 16px; margin-top: 40px; }
+.num { border-top: 1px solid var(--line); padding-top: 18px; }
+.num b { display: block; font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 600; letter-spacing: -0.05em; font-variant-numeric: tabular-nums; line-height: 1; }
+.num span { display: block; margin-top: 8px; font-size: 0.88rem; color: var(--muted); }
+.timeline { list-style: none; margin: 0; padding: 0; }
+.timeline li { display: grid; grid-template-columns: 92px minmax(0,1fr); gap: 16px; padding-block: 18px; border-top: 1px solid var(--line); transition: padding .3s; }
+.timeline li:hover { padding-left: 8px; }
+.timeline li:last-child { border-bottom: 1px solid var(--line); }
+.timeline .when { font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted); padding-top: 3px; }
+.timeline strong { display: block; font-weight: 600; }
+.timeline span { color: var(--muted); font-size: 0.92rem; }
+.side-h { margin: 34px 0 12px; }
+.side-h:first-child { margin-top: 0; }
+
+/* ---------- contact ---------- */
+.contact-wrap { margin-top: 150px; }
+.contact { position: relative; overflow: hidden; border-radius: 36px; background: var(--ink); color: var(--bg); padding: clamp(36px, 6vw, 88px) 0; display: grid; gap: 28px; }
+.contact .inner { padding-inline: clamp(24px, 6vw, 88px); display: grid; gap: 22px; position: relative; z-index: 1; }
+.contact .eyebrow { color: color-mix(in srgb, var(--bg) 55%, var(--ink)); }
+.contact h2 { font-size: clamp(2.6rem, 7vw, 5.6rem); line-height: .95; letter-spacing: -0.05em; max-width: 13ch; }
+.contact h2 .serif { color: var(--accent); }
+.contact p { color: color-mix(in srgb, var(--bg) 70%, var(--ink)); max-width: 50ch; }
+.mailbox { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.mail { font-family: var(--font-mono); font-size: clamp(0.95rem, 2vw, 1.15rem); padding: 15px 18px; border-radius: 14px; border: 1px solid color-mix(in srgb, var(--bg) 22%, var(--ink)); user-select: all; word-break: break-all; }
+.copy { font: 500 1rem var(--font-sans); padding: 15px 22px; border-radius: 14px; border: 0; background: var(--accent); color: #fff; cursor: pointer; transition: transform .25s; }
+.copy:hover { transform: scale(1.04); }
+.big-marquee { overflow: hidden; border-top: 1px solid color-mix(in srgb, var(--bg) 14%, var(--ink)); padding-top: 26px; position: relative; z-index: 1; }
+.big-marquee .row { display: flex; gap: 40px; width: max-content; animation: slide 30s linear infinite; font-size: clamp(2.4rem, 6vw, 4.4rem); font-weight: 600; letter-spacing: -0.04em; line-height: 1; white-space: nowrap; }
+.big-marquee .row span { display: inline-flex; align-items: center; gap: 40px; color: transparent; -webkit-text-stroke: 1px color-mix(in srgb, var(--bg) 45%, var(--ink)); }
+.big-marquee .row span:nth-child(even) { color: var(--bg); -webkit-text-stroke: 0; }
+.big-marquee .row span::after { content: "✦"; color: var(--accent); -webkit-text-stroke: 0; font-size: .5em; }
+.contact .glow { position: absolute; width: 520px; height: 520px; border-radius: 50%; background: var(--accent); filter: blur(120px); opacity: .28; right: -120px; top: -160px; animation: drift1 16s ease-in-out infinite; }
+footer { padding-block: 40px; color: var(--muted); font-size: 0.88rem; }
+footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+
+/* ---------- scroll reveal (only below-the-fold items get .pre, so the page is complete at rest) ---------- */
+[data-reveal] { transition: transform 1s cubic-bezier(.2,.8,.2,1), opacity 1s cubic-bezier(.2,.8,.2,1); transition-delay: var(--d, 0s); }
+[data-reveal].pre { opacity: 0; transform: translateY(50px); }
+
+/* ---------- custom cursor ---------- */
+.cur-dot, .cur-ring { position: fixed; left: 0; top: 0; pointer-events: none; z-index: 100; border-radius: 50%; opacity: 0; transition: opacity .3s; }
+.cur-dot { width: 6px; height: 6px; margin: -3px 0 0 -3px; background: var(--accent); }
+.cur-ring { width: 38px; height: 38px; margin: -19px 0 0 -19px; border: 1px solid color-mix(in srgb, var(--ink) 35%, transparent); display: grid; place-items: center; transition: width .3s, height .3s, margin .3s, background .3s, border-color .3s, opacity .3s; }
+.cur-ring span { font: 600 0.72rem var(--font-sans); color: #fff; opacity: 0; transition: opacity .2s; }
+.cur-ring.big { width: 84px; height: 84px; margin: -42px 0 0 -42px; background: var(--accent); border-color: var(--accent); }
+.cur-ring.big span { opacity: 1; }
+.cur-ring.link { width: 56px; height: 56px; margin: -28px 0 0 -28px; border-color: var(--accent); }
+.has-cursor .cur-dot, .has-cursor .cur-ring { opacity: 1; }
+
+/* ---------- responsive ---------- */
+@media (max-width: 960px) {
+  .hero .wrap { grid-template-columns: 1fr; }
+  .stage { height: 420px; max-width: 560px; }
+  .case { position: relative; top: auto; grid-template-columns: 1fr; min-height: 0; }
+  .caps { grid-template-columns: 1fr; }
+  .about, .sec-head { grid-template-columns: 1fr; }
+  .sec-head p { justify-self: start; }
+}
+@media (max-width: 760px) {
+  .nav a:not(.pill-btn) { display: none; }
+  .hero { padding-top: 120px; padding-bottom: 60px; }
+  .stage { height: 340px; }
+  .badge.k2 { bottom: 0; }
+  .section { padding-block: 96px 0; }
+  .process { grid-template-columns: repeat(3, minmax(0,1fr)); }
+  .ribbon .tile { height: 140px; } .ribbon .tile img { max-height: 112px; }
+}
+@media (max-width: 480px) {
+  .duo { grid-template-columns: 1fr; }
+  .numbers { gap: 10px; }
+  .stage { height: 290px; }
+  .badge { font-size: .74rem; padding: 7px 11px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  html { scroll-behavior: auto; }
+  [data-reveal].pre { opacity: 1; transform: none; }
+}
+</style>
+</head>
+<body>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<div class="cur-dot" aria-hidden="true"></div>
+<div class="cur-ring" aria-hidden="true"><span>View</span></div>
+
+<header class="site-head" id="head">
+  <div class="wrap">
+    <a class="brand" href="#top"><span class="mark">AB</span>Alaa Bousayf</a>
+    <nav class="nav" aria-label="Main">
+      <a href="#work">Design</a>
+      <a href="#dev">Development</a>
+      <a href="#capabilities">Capabilities</a>
+      <a href="#about">About</a>
+      <a class="pill-btn magnetic" href="#contact">Let's talk</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="blobs" aria-hidden="true"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+    <div class="grain" aria-hidden="true"></div>
+    <div class="wrap">
+      <div>
+        <span class="avail"><i aria-hidden="true"></i>Available for new roles · remote or Benghazi</span>
+        <h1>
+          <span class="line"><span>UI/UX designer</span></span>
+          <span class="line"><span><span class="amp">&amp;</span> web developer</span></span>
+          <span class="line"><span>crafting <span class="rotator" id="rotator"><span class="on">clear</span><span>human</span><span>delightful</span></span> products.</span></span>
+        </h1>
+        <p class="lede">Hi, I'm Alaa Bousayf. I design interfaces in Figma, from research and user flows to polished screens, and then <b>I build them myself</b> in React, Tailwind CSS and Laravel.</p>
+        <div class="roles" aria-label="Roles">
+          <span class="role r-design"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3a4.5 4.5 0 0 0 0 9 4.5 4.5 0 0 0 0-9zM12 12a4.5 4.5 0 1 0 4.5 4.5" stroke-linecap="round"/></svg>UI/UX Design</span>
+          <span class="role-plus" aria-hidden="true">+</span>
+          <span class="role r-dev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8.5 7L3.5 12l5 5M15.5 7l5 5-5 5" stroke-linecap="round" stroke-linejoin="round"/></svg>Web Development</span>
+        </div>
+        <div class="ctas">
+          <a class="btn primary magnetic" href="#work">See my work <span class="arr" aria-hidden="true">→</span></a>
+          <a class="btn ghost magnetic" href="#contact">Get in touch</a>
+        </div>
+        <div class="scroll-cue" aria-hidden="true"><span class="mouse"></span>Scroll to explore</div>
+      </div>
+
+      <div class="stage" id="stage" aria-label="Featured designs">
+        <div class="float s1" data-depth="18"><div class="float-in"><div class="cap">LIU / BPMS portal</div><img src="images/liu-bpms.png" width="722" height="397" alt="LIU BPMS portal welcome screen"></div></div>
+        <div class="float s3" data-depth="34"><div class="float-in"><div class="cap">Foody / Onboarding</div><img src="images/foody-onboarding.png" width="635" height="305" alt="Foody onboarding screens"></div></div>
+        <div class="float s2" data-depth="26"><div class="float-in"><div class="cap">Mowarred / UI</div><img src="images/mowarred-hifi.png" width="524" height="303" alt="Mowarred app screens"></div></div>
+        <span class="badge k1" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l2.6 5.6 6 .7-4.5 4.1 1.2 6L12 16.5 6.7 19.4l1.2-6L3.4 9.3l6-.7z" stroke-linejoin="round"/></svg>1st place · TGP</span>
+        <span class="badge k2" aria-hidden="true">Figma → React</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- RIBBON -->
+  <div class="ribbon" aria-hidden="true">
+    <div class="ribbon-track">
+      <div class="tile" style="background:var(--t-mowarred)"><img src="images/mowarred-hifi.png" alt=""></div>
+      <div class="tile" style="background:var(--t-liu)"><img src="images/liu-guidelines.png" alt=""></div>
+      <div class="tile" style="background:var(--t-foody)"><img src="images/foody-result.png" alt=""></div>
+      <div class="tile" style="background:var(--t-manasa)"><img src="images/manasa-courses.png" alt=""></div>
+      <div class="tile" style="background:var(--t-sage)"><img src="images/ecommerce-hifi.png" alt=""></div>
+      <div class="tile" style="background:var(--t-liu)"><img src="images/liu-conference.png" alt=""></div>
+      <div class="tile" style="background:var(--t-invoice)"><img src="images/student-invoice.png" alt=""></div>
+      <div class="tile" style="background:var(--t-mowarred)"><img src="images/mowarred-wireframes.png" alt=""></div>
+      <div class="tile" style="background:var(--t-mowarred)"><img src="images/mowarred-hifi.png" alt=""></div>
+      <div class="tile" style="background:var(--t-liu)"><img src="images/liu-guidelines.png" alt=""></div>
+      <div class="tile" style="background:var(--t-foody)"><img src="images/foody-result.png" alt=""></div>
+      <div class="tile" style="background:var(--t-manasa)"><img src="images/manasa-courses.png" alt=""></div>
+      <div class="tile" style="background:var(--t-sage)"><img src="images/ecommerce-hifi.png" alt=""></div>
+      <div class="tile" style="background:var(--t-liu)"><img src="images/liu-conference.png" alt=""></div>
+      <div class="tile" style="background:var(--t-invoice)"><img src="images/student-invoice.png" alt=""></div>
+      <div class="tile" style="background:var(--t-mowarred)"><img src="images/mowarred-wireframes.png" alt=""></div>
+    </div>
+  </div>
+
+  <!-- DESIGN + CODE -->
+  <section class="section" id="dual">
+    <div class="wrap">
+      <div class="sec-head" data-reveal>
+        <h2>One person, <span class="serif">two crafts</span></h2>
+        <p>Most teams hand designs from a designer to a developer. With me, the person who designs the screen also writes the code, so nothing gets lost.</p>
+      </div>
+      <div class="dual">
+        <div class="side s-design" data-reveal>
+          <div class="side-top"><span class="eyebrow">01 · I design</span><span class="side-tag">Figma</span></div>
+          <h3>UI/UX Designer</h3>
+          <p>Research, personas, user flows, wireframes, polished UI and design systems, in Arabic and English.</p>
+          <div class="mock" aria-hidden="true">
+            <div class="mock-bar"><i></i><i></i><i></i><span>Mowarred / Home</span></div>
+            <div class="mock-body">
+              <div class="layers"><span class="on">▣ Home</span><span>▢ Header</span><span>▢ Search</span><span>▢ Categories</span><span>▢ Top products</span><span>▢ Tab bar</span></div>
+              <div class="artboard"><img src="images/mowarred-hifi.png" width="524" height="303" alt=""><span class="sel-box"><span class="sel-lbl">Frame · 393 × 852</span></span></div>
+            </div>
+          </div>
+        </div>
+        <div class="dual-arrow" aria-hidden="true"><span>→</span></div>
+        <div class="side s-dev" data-reveal style="--d:.15s">
+          <div class="side-top"><span class="eyebrow">02 · I build</span><span class="side-tag">React · Tailwind · Laravel</span></div>
+          <h3>Web Developer</h3>
+          <p>I turn those designs into responsive, working websites and apps with React and Tailwind CSS on the front end and Laravel behind them.</p>
+          <div class="mock code" aria-hidden="true">
+            <div class="mock-bar"><i></i><i></i><i></i><span>ProductCard.jsx</span></div>
+<pre id="typed"><span class="k">export default function</span> <span class="f">ProductCard</span>({ product }) {
+  <span class="k">return</span> (
+    &lt;<span class="t">div</span> <span class="a">className</span>=<span class="s">"rounded-2xl bg-white p-4 shadow"</span>&gt;
+      &lt;<span class="t">img</span> <span class="a">src</span>={product.image} <span class="a">className</span>=<span class="s">"rounded-xl"</span> /&gt;
+      &lt;<span class="t">h3</span> <span class="a">className</span>=<span class="s">"mt-3 font-semibold"</span>&gt;{product.name}&lt;/<span class="t">h3</span>&gt;
+      &lt;<span class="t">p</span> <span class="a">className</span>=<span class="s">"text-blue-600"</span>&gt;{product.price} LYD&lt;/<span class="t">p</span>&gt;
+    &lt;/<span class="t">div</span>&gt;
+  );
+}<span class="caret"></span></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section class="section" id="work">
+    <div class="wrap">
+      <div class="sec-head" data-reveal>
+        <h2>Design <span class="serif">work</span></h2>
+        <p>Six projects, from user research to final UI. Scroll, and each one slides over the last.</p>
+      </div>
+
+      <div class="stack">
+        <article class="case c-mowarred">
+          <div class="case-text">
+            <span class="idx"><b>01</b> / UX case study · iOS app</span>
+            <h3>Mowarred</h3>
+            <p class="one">A B2B marketplace that takes Libya's shop-to-supplier ordering off the phone and into one app.</p>
+            <div class="process" aria-label="Design process">
+              <span><b>01</b>Brief</span><span><b>02</b>Personas</span><span><b>03</b>Flows</span><span><b>04</b>Wireframes</span><span><b>05</b>UI</span>
+            </div>
+            <p class="desc">Shops still order stock by calls and messaging apps, so orders get lost and stock is unclear. I built personas and empathy maps, mapped the flows, and moved from 14 wireframes to a final design with a reusable component set.</p>
+            <div class="chips"><span class="chip">UX research</span><span class="chip">Personas</span><span class="chip">Design system</span></div>
+            <a class="case-link magnetic" href="https://www.figma.com/design/ASu2nE0PNxoaKJepz3E3XK/Mowarred-UX-UI-project" target="_blank" rel="noopener">View in Figma <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="case-media tilt" data-cursor="view">
+            <figure class="shot"><figcaption>Home · Categories · Brand · Product</figcaption><img src="images/mowarred-hifi.png" width="524" height="303" alt="Mowarred final screens"></figure>
+            <figure class="shot"><figcaption>WF1 → WF8 · wireframes</figcaption><img src="images/mowarred-wireframes.png" width="772" height="305" alt="Mowarred wireframes"></figure>
+          </div>
+        </article>
+
+        <article class="case c-foody">
+          <div class="case-text">
+            <span class="idx"><b>02</b> / Mobile app · TGP program</span>
+            <h3>Foody</h3>
+            <p class="one">A short, playful quiz that answers "what should I eat?"</p>
+            <p class="desc">Users set allergies and disliked foods once, then answer three quick questions: cuisine, price and time. Foody suggests a dish with its ingredients, or picks one at random. Warm coral and big tappable choices keep it fast and fun.</p>
+            <div class="chips"><span class="chip">Onboarding</span><span class="chip">Quiz flow</span><span class="chip">Visual design</span></div>
+            <a class="case-link magnetic" href="https://www.figma.com/design/RuNMRCZtykRbjfgLFnJEZm/Foody-app--TGP--Alaa-Bousayf" target="_blank" rel="noopener">View in Figma <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="case-media tilt" data-cursor="view">
+            <figure class="shot"><figcaption>Splash · Onboarding · Allergies · Dislikes</figcaption><img src="images/foody-onboarding.png" width="635" height="305" alt="Foody onboarding screens"></figure>
+            <figure class="shot"><figcaption>Q3 · Result · Details</figcaption><img src="images/foody-result.png" width="435" height="260" alt="Foody result screens"></figure>
+          </div>
+        </article>
+
+        <article class="case c-liu">
+          <div class="case-text">
+            <span class="idx"><b>03</b> / Design system · Web · RTL</span>
+            <h3>Libyan International University</h3>
+            <p class="one">One visual language for the website, a conference and a staff portal.</p>
+            <p class="desc">I wrote the website guidelines (palette, type scale, components), then used them on an Arabic conference page with a live countdown and on the welcome screen of the university's BPMS portal.</p>
+            <div class="chips"><span class="chip">Style guide</span><span class="chip">Arabic RTL</span><span class="chip">1440 desktop</span></div>
+            <a class="case-link magnetic" href="https://www.figma.com/design/N71ORhlGkNH30993uQEX37/My-designs" target="_blank" rel="noopener">View in Figma <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="case-media tilt" data-cursor="view">
+            <figure class="shot"><figcaption>BPMS portal · 1600 × 879</figcaption><img src="images/liu-bpms.png" width="722" height="397" alt="LIU BPMS portal"></figure>
+            <div class="duo">
+              <figure class="shot"><figcaption>Guidelines</figcaption><img src="images/liu-guidelines.png" width="388" height="460" alt="LIU website guidelines"></figure>
+              <figure class="shot"><figcaption>Conference · RTL</figcaption><img src="images/liu-conference.png" width="338" height="460" alt="Arabic conference page"></figure>
+            </div>
+          </div>
+        </article>
+
+        <article class="case c-manasa">
+          <div class="case-text">
+            <span class="idx"><b>04</b> / Mobile app · Arabic</span>
+            <h3>Manasa <span class="ar" style="font-weight:600;color:var(--muted)">منصة</span></h3>
+            <p class="one">An Arabic e-learning app that keeps working when the connection doesn't.</p>
+            <p class="desc">Learners browse trainers, open a course to see lessons, rating and student count, and download lessons for offline viewing with clear progress, pause and delete controls.</p>
+            <div class="chips"><span class="chip">Arabic RTL</span><span class="chip">Offline first</span><span class="chip">iOS</span></div>
+            <a class="case-link magnetic" href="https://www.figma.com/design/N71ORhlGkNH30993uQEX37/My-designs" target="_blank" rel="noopener">View in Figma <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="case-media tilt" data-cursor="view">
+            <figure class="shot"><figcaption>download course · trainers · course</figcaption><img src="images/manasa-courses.png" width="714" height="392" alt="Manasa app screens"></figure>
+          </div>
+        </article>
+
+        <article class="case c-invoice">
+          <div class="case-text">
+            <span class="idx"><b>05</b> / Document design · A4</span>
+            <h3>Tuition invoice <span class="ar" style="font-size:.5em;font-weight:600;color:var(--muted);display:block;margin-top:10px">فاتورة رسوم دراسية</span></h3>
+            <p class="one">Complex payment details, made clear on a single Arabic page.</p>
+            <p class="desc">Student details, total, paid and remaining amounts in LYD, the instalment schedule with payment status and a late-payment warning, all in the university's colours.</p>
+            <a class="case-link magnetic" href="https://www.figma.com/design/VnBUlYo0lXl2o6GrUPRJQ1/%D9%81%D8%A7%D8%AA%D9%88%D8%B1%D8%A9-%D8%B7%D8%A7%D9%84%D8%A8" target="_blank" rel="noopener">View in Figma <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="case-media tilt" data-cursor="view">
+            <figure class="shot"><figcaption>Main · A4</figcaption><img src="images/student-invoice.png" width="438" height="438" alt="Arabic tuition invoice"></figure>
+          </div>
+        </article>
+
+        <article class="case c-sage">
+          <div class="case-text">
+            <span class="idx"><b>06</b> / Web · E-commerce</span>
+            <h3>The Sage Collection</h3>
+            <p class="one">From grey boxes to a finished storefront.</p>
+            <p class="desc">A store homepage designed in two passes: a wireframe to settle the structure, then the final look with photography and a soft sage palette. It's also the base of my React and Laravel e-commerce build.</p>
+            <a class="case-link magnetic" href="https://www.figma.com/design/N71ORhlGkNH30993uQEX37/My-designs" target="_blank" rel="noopener">View in Figma <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="case-media tilt" data-cursor="view">
+            <div class="duo">
+              <figure class="shot"><figcaption>Wireframe</figcaption><img src="images/ecommerce-wireframe.png" width="271" height="390" alt="Store wireframe"></figure>
+              <figure class="shot"><figcaption>Final</figcaption><img src="images/ecommerce-hifi.png" width="271" height="390" alt="Final store design"></figure>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEVELOPMENT -->
+  <section class="section" id="dev">
+    <div class="wrap">
+      <div class="sec-head" data-reveal>
+        <h2>Development <span class="serif">work</span></h2>
+        <p>Full-stack web projects I designed and built, with React and Tailwind CSS on the front end and Laravel on the back end.</p>
+      </div>
+      <div class="dev-list">
+        <a class="dev-row" data-reveal href="#contact"><span class="no">01</span><div class="dev-main"><h3>E-commerce platform</h3><p>Product catalogue, cart and order handling, built from my Sage Collection design.</p></div><div class="dev-stack"><span>React</span><span>Tailwind</span><span>Laravel</span></div><span class="go" aria-hidden="true">↗</span></a>
+        <a class="dev-row" data-reveal href="#contact"><span class="no">02</span><div class="dev-main"><h3>Interactive dashboards</h3><p>Data dashboards with charts and filters, styled with Tailwind and powered by a Laravel API.</p></div><div class="dev-stack"><span>React</span><span>Tailwind</span><span>Laravel</span></div><span class="go" aria-hidden="true">↗</span></a>
+        <a class="dev-row" data-reveal href="#contact"><span class="no">03</span><div class="dev-main"><h3>Book management system</h3><p>A complete system to add, organise and track books.</p></div><div class="dev-stack"><span>React</span><span>Tailwind</span><span>Laravel</span></div><span class="go" aria-hidden="true">↗</span></a>
+        <a class="dev-row" data-reveal href="#contact"><span class="no">04</span><div class="dev-main"><h3>Portfolio management website</h3><p>Front end and back end of a platform for viewing and managing portfolios.</p></div><div class="dev-stack"><span>Front end</span><span>Back end</span></div><span class="go" aria-hidden="true">↗</span></a>
+        <a class="dev-row" data-reveal href="#contact"><span class="no">05</span><div class="dev-main"><h3>Legal translators platform</h3><p>A website where legal translators show their services and manage client requests.</p></div><div class="dev-stack"><span>Web app</span></div><span class="go" aria-hidden="true">↗</span></a>
+        <a class="dev-row" data-reveal href="#contact"><span class="no">06</span><div class="dev-main"><h3>Future Technology website</h3><p>Redesigning and rebuilding the company's landing page for better visuals and UX.</p></div><div class="dev-stack"><span class="live">In progress</span><span>UI/UX</span><span>Front end</span></div><span class="go" aria-hidden="true">↗</span></a>
+      </div>
+      <p class="dev-note" data-reveal>And this portfolio: designed and coded by hand.</p>
+    </div>
+  </section>
+
+  <!-- CAPABILITIES -->
+  <section class="section" id="capabilities">
+    <div class="wrap">
+      <div class="sec-head" data-reveal>
+        <h2>What I bring <span class="serif">to a team</span></h2>
+        <p>A designer who understands engineering, so designs ship the way they were drawn.</p>
+      </div>
+      <div class="caps">
+        <div class="cap" data-reveal style="--d:0s">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5" stroke-linecap="round"/></svg></span>
+          <h3>Research</h3><p>Briefs, personas, empathy maps, user flows and information architecture, backed by real usability methods.</p>
+          <ul><li>Personas</li><li>User flows</li><li>Usability testing</li><li>ISO 9241-10</li></ul>
+        </div>
+        <div class="cap" data-reveal style="--d:.12s">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3.5" y="3.5" width="17" height="17" rx="3"/><path d="M3.5 9h17M9 9v11.5"/></svg></span>
+          <h3>Design</h3><p>From low-fidelity wireframes to polished UI, Arabic RTL layouts and design systems that teams can reuse.</p>
+          <ul><li>Figma</li><li>Wireframes</li><li>Prototyping</li><li>Design systems</li></ul>
+        </div>
+        <div class="cap" data-reveal style="--d:.24s">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M8.5 7L3.5 12l5 5M15.5 7l5 5-5 5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <h3>Build</h3><p>Front-end development in React and Tailwind CSS, with Laravel for the back end, so handoff is smooth.</p>
+          <ul><li>React</li><li>Tailwind CSS</li><li>JavaScript</li><li>Laravel</li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <div class="wrap about">
+      <div data-reveal>
+        <p class="eyebrow" style="margin-bottom:20px">About</p>
+        <p class="statement">I'm a software engineer who fell for design. I care about the moment a screen <span class="serif">just makes sense</span>, in Arabic and in English.</p>
+        <div class="body">
+          <p>My graduation research measured the usability of banking software in Libya: 135 bank users, the ISO 9241-10 framework and a comparison between an international system and the local "Almezan" system. It taught me to back design decisions with evidence.</p>
+          <p>I placed first in Future Technology's TGP graduate program and now work there as a software engineer, supporting a partner bank, helping launch its mobile banking app and redesigning the company website.</p>
+        </div>
+        <div class="numbers">
+          <div class="num"><b data-count="95.9" data-dec="1" data-suffix="%">95.9%</b><span>GPA, Software Engineering</span></div>
+          <div class="num"><b data-count="1" data-suffix="st">1st</b><span>TGP graduate program</span></div>
+          <div class="num"><b data-count="135">135</b><span>users in my usability study</span></div>
+        </div>
+      </div>
+      <aside data-reveal style="--d:.15s">
+        <p class="eyebrow side-h">Experience</p>
+        <ul class="timeline">
+          <li><span class="when">2026 – now</span><div><strong>Software Engineer, co-op</strong><span>Future Technology</span></div></li>
+          <li><span class="when">2026</span><div><strong>1st place, TGP program</strong><span>Future Technology</span></div></li>
+          <li><span class="when">Feb 2026</span><div><strong>B.Sc. Software Engineering</strong><span>Libyan International University</span></div></li>
+        </ul>
+        <p class="eyebrow side-h">Certificates</p>
+        <ul class="timeline">
+          <li><span class="when">UI/UX</span><div><strong>UI/UX Design</strong><span>Spark, funded by the European Union</span></div></li>
+          <li><span class="when">Web</span><div><strong>Front-End &amp; Back-End Development</strong><span>Google</span></div></li>
+        </ul>
+        <p class="eyebrow side-h">Languages</p>
+        <p style="color:var(--ink-2)">Arabic (native) · English (advanced)</p>
+      </aside>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <div class="wrap contact-wrap">
+    <section class="contact" id="contact" data-reveal>
+      <div class="glow" aria-hidden="true"></div>
+      <div class="inner">
+        <p class="eyebrow">Contact</p>
+        <h2>Let's build something <span class="serif">people love.</span></h2>
+        <p>I'm open to UI/UX design, web development and front-end roles, remote or in Benghazi. Email is the fastest way to reach me.</p>
+        <div class="mailbox">
+          <span class="mail" id="email">alaaelagore13@gmail.com</span>
+          <button class="copy magnetic" id="copy-email" type="button">Copy email</button>
+        </div>
+      </div>
+      <div class="big-marquee" aria-hidden="true">
+        <div class="row"><span>UI/UX Design</span><span>Web Development</span><span>Let's work together</span><span>UI/UX Design</span><span>Web Development</span><span>Let's work together</span><span>UI/UX Design</span><span>Web Development</span><span>Let's work together</span><span>UI/UX Design</span><span>Web Development</span><span>Let's work together</span></div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer><div class="wrap"><span>© 2026 Alaa Bousayf · UI/UX Designer &amp; Web Developer</span></div></footer>
+
+<script>
+(function () {
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const fine = window.matchMedia('(pointer: fine)').matches;
+
+  // Header state + scroll progress
+  const head = document.getElementById('head'), bar = document.getElementById('progress');
+  function onScroll() {
+    head.classList.toggle('scrolled', window.scrollY > 10);
+    const max = document.documentElement.scrollHeight - innerHeight;
+    bar.style.transform = 'scaleX(' + (max > 0 ? scrollY / max : 0) + ')';
+  }
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+  // Rotating word
+  const words = Array.from(document.querySelectorAll('#rotator > span'));
+  let wi = 0;
+  if (!reduce) setInterval(function () {
+    const cur = words[wi]; wi = (wi + 1) % words.length; const nxt = words[wi];
+    cur.classList.remove('on'); cur.classList.add('out');
+    nxt.classList.remove('out'); nxt.classList.add('on');
+    setTimeout(function () { cur.classList.remove('out'); }, 700);
+  }, 2400);
+
+  // Reveal on scroll: only items below the fold start hidden
+  const revs = document.querySelectorAll('[data-reveal]');
+  if ('IntersectionObserver' in window && !reduce) {
+    const io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.remove('pre'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    revs.forEach(function (el) { if (el.getBoundingClientRect().top > innerHeight) { el.classList.add('pre'); io.observe(el); } });
+  }
+
+  // Count-up numbers (the final value is already in the markup)
+  const nums = document.querySelectorAll('[data-count]');
+  if ('IntersectionObserver' in window && !reduce) {
+    const nio = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return; nio.unobserve(e.target);
+        const el = e.target, to = parseFloat(el.dataset.count), dec = +(el.dataset.dec || 0), suf = el.dataset.suffix || '';
+        const t0 = performance.now(), dur = 1400;
+        (function tick(t) {
+          const p = Math.min(1, (t - t0) / dur), v = to * (1 - Math.pow(1 - p, 3));
+          el.textContent = (to === 1 ? Math.max(1, Math.round(v)) : v.toFixed(dec)) + suf;
+          if (p < 1) requestAnimationFrame(tick);
+        })(t0);
+      });
+    }, { threshold: 0.6 });
+    nums.forEach(function (n) { nio.observe(n); });
+  }
+
+  // Type out the code sample when it scrolls into view (full code is in the markup at rest)
+  const typed = document.getElementById('typed');
+  if (typed && 'IntersectionObserver' in window && !reduce) {
+    const html = typed.innerHTML;
+    const tio = new IntersectionObserver(function (es) {
+      if (!es[0].isIntersecting) return; tio.disconnect();
+      const tmp = document.createElement('div'); tmp.innerHTML = html;
+      const caret = tmp.querySelector('.caret'); if (caret) caret.remove();
+      const total = tmp.textContent.length; let n = 0;
+      function render(k) {
+        // rebuild the highlighted markup up to k visible characters
+        let left = k; const out = document.createElement('div');
+        (function walk(src, dst) {
+          for (const node of Array.from(src.childNodes)) {
+            if (left <= 0) return;
+            if (node.nodeType === 3) { const t = node.textContent.slice(0, left); left -= t.length; dst.appendChild(document.createTextNode(t)); }
+            else { const c = node.cloneNode(false); dst.appendChild(c); walk(node, c); }
+          }
+        })(tmp, out);
+        typed.innerHTML = out.innerHTML + '<span class="caret"></span>';
+      }
+      (function step() { n = Math.min(total, n + 3); render(n); if (n < total) setTimeout(step, 18); })();
+    }, { threshold: 0.4 });
+    tio.observe(typed);
+  }
+
+  // Stacked cards: scale the card underneath as the next one covers it
+  const cases = Array.from(document.querySelectorAll('.case'));
+  function stackFx() {
+    if (innerWidth <= 960) { cases.forEach(function (c) { c.style.transform = ''; c.style.filter = ''; }); return; }
+    cases.forEach(function (c, i) {
+      const next = cases[i + 1]; if (!next) return;
+      const r = next.getBoundingClientRect(), top = c.getBoundingClientRect().top;
+      const p = Math.min(1, Math.max(0, 1 - (r.top - top) / innerHeight));
+      c.style.transform = 'scale(' + (1 - p * 0.05) + ')';
+      c.style.filter = 'brightness(' + (1 - p * 0.12) + ')';
+    });
+  }
+  if (!reduce) { addEventListener('scroll', stackFx, { passive: true }); addEventListener('resize', stackFx); stackFx(); }
+
+  if (fine && !reduce) {
+    // Hero parallax
+    const stage = document.getElementById('stage');
+    const floats = stage.querySelectorAll('.float');
+    document.querySelector('.hero').addEventListener('pointermove', function (e) {
+      const x = e.clientX / innerWidth - 0.5, y = e.clientY / innerHeight - 0.5;
+      floats.forEach(function (f) { const d = +f.dataset.depth; f.style.transform = 'translate(' + (-x * d) + 'px,' + (-y * d) + 'px) rotateY(' + (x * 6) + 'deg) rotateX(' + (-y * 6) + 'deg)'; });
+    });
+
+    // Tilt on case images
+    document.querySelectorAll('.tilt').forEach(function (el) {
+      el.addEventListener('pointermove', function (e) {
+        const r = el.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
+        el.style.transform = 'perspective(1000px) rotateY(' + (x * 7) + 'deg) rotateX(' + (-y * 7) + 'deg)';
+      });
+      el.addEventListener('pointerleave', function () { el.style.transform = ''; });
+    });
+
+    // Spotlight on capability cards
+    document.querySelectorAll('.cap').forEach(function (el) {
+      el.addEventListener('pointermove', function (e) { const r = el.getBoundingClientRect(); el.style.setProperty('--mx', (e.clientX - r.left) + 'px'); el.style.setProperty('--my', (e.clientY - r.top) + 'px'); });
+    });
+
+    // Magnetic buttons
+    document.querySelectorAll('.magnetic').forEach(function (el) {
+      el.addEventListener('pointermove', function (e) { const r = el.getBoundingClientRect(); el.style.transform = 'translate(' + ((e.clientX - r.left - r.width / 2) * 0.25) + 'px,' + ((e.clientY - r.top - r.height / 2) * 0.35) + 'px)'; });
+      el.addEventListener('pointerleave', function () { el.style.transform = ''; });
+    });
+
+    // Custom cursor
+    const dot = document.querySelector('.cur-dot'), ring = document.querySelector('.cur-ring');
+    let mx = -100, my = -100, rx = -100, ry = -100;
+    addEventListener('pointermove', function (e) { mx = e.clientX; my = e.clientY; document.body.classList.add('has-cursor'); dot.style.transform = 'translate(' + mx + 'px,' + my + 'px)'; });
+    document.addEventListener('pointerleave', function () { document.body.classList.remove('has-cursor'); });
+    (function loop() { rx += (mx - rx) * 0.18; ry += (my - ry) * 0.18; ring.style.transform = 'translate(' + rx + 'px,' + ry + 'px)'; requestAnimationFrame(loop); })();
+    document.querySelectorAll('[data-cursor="view"]').forEach(function (el) {
+      el.addEventListener('pointerenter', function () { ring.classList.add('big'); });
+      el.addEventListener('pointerleave', function () { ring.classList.remove('big'); });
+    });
+    document.querySelectorAll('a, button').forEach(function (el) {
+      el.addEventListener('pointerenter', function () { ring.classList.add('link'); });
+      el.addEventListener('pointerleave', function () { ring.classList.remove('link'); });
+    });
+  }
+
+  // Copy email
+  document.getElementById('copy-email').addEventListener('click', async function () {
+    const btn = this, box = document.getElementById('email');
+    try { await navigator.clipboard.writeText(box.textContent); btn.textContent = 'Copied ✓'; }
+    catch (e) { const r = document.createRange(); r.selectNodeContents(box); const s = getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent = 'Selected, press Ctrl+C'; }
+    setTimeout(function () { btn.textContent = 'Copy email'; }, 2200);
+  });
+})();
+</script>
+</body>
+</html>
